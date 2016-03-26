@@ -1,0 +1,26 @@
+{
+  "name": "purescript-pqueue",
+  "authors": [
+    "Josh Bassett <josh.bassett@gmail.com>"
+  ],
+  "description": "A directed graph library for PureScript.",
+  "license": "MIT",
+  "homepage": "https://github.com/nullobject/purescript-pqueue",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nullobject/purescript-pqueue"
+  },
+  "ignore": [
+    "**/.*",
+    "bower_components",
+    "output",
+    "test"
+  ],
+  "dependencies": {
+    "purescript-lists": "^0.7.10",
+    "purescript-sets": "^0.5.7"
+  },
+  "devDependencies": {
+    "purescript-spec": "^0.7.2"
+  }
+}
