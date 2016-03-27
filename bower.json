@@ -3,7 +3,7 @@
   "authors": [
     "Josh Bassett <josh.bassett@gmail.com>"
   ],
-  "description": "A directed graph library for PureScript.",
+  "description": "A priority queue library for PureScript.",
   "license": "MIT",
   "homepage": "https://github.com/nullobject/purescript-pqueue",
   "repository": {
