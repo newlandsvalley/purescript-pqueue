@@ -15,8 +15,8 @@ import Prelude (class Eq, class Ord, class Show, Ordering, compare, show, ($), (
 
 import Data.Foldable (class Foldable)
 import Data.List (List(..))
-import Data.List as L
-import Data.List.Unsafe as LU
+import Data.List (fromFoldable, head, insertBy, last, null, singleton, sortBy) as L
+import Data.List.Unsafe (init, tail) as LU
 import Data.Maybe (Maybe(..))
 import Data.Tuple (Tuple(..), fst)
 
