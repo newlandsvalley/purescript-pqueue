@@ -1,22 +1,23 @@
 module Data.PQueue
-  ( PQueue
+  ( PQueue(..)
   , fromFoldable
   , empty
   , singleton
   , isEmpty
-  , head
-  , head'
   , insert
+  , head
   , tail
+  , init
+  , last
   ) where
 
-import Prelude (class Eq, class Ord, class Show, Ordering, compare, show, (==))
+import Prelude (class Eq, class Ord, class Show, Ordering, compare, show, ($), (==))
 
 import Data.Foldable (class Foldable)
 import Data.List (List(..))
 import Data.List as L
 import Data.List.Unsafe as LU
-import Data.Maybe (Maybe)
+import Data.Maybe (Maybe(..))
 import Data.Tuple (Tuple(..), fst)
 
 -- | `PQueue p a` represents a queue of elements of type `a` with priorities of type `p`.
@@ -48,18 +49,24 @@ singleton key value = PQueue (L.singleton (Tuple key value))
 isEmpty :: forall p a. PQueue p a -> Boolean
 isEmpty (PQueue list) = L.null list
 
--- | Get the minimal element of a queue.
-head :: forall p a. PQueue p a -> Maybe (Tuple p a)
-head (PQueue list) = L.head list
-
--- | Unsafely get the minimal element of a queue.
-head' :: forall p a. PQueue p a -> Tuple p a
-head' (PQueue list) = LU.head list
-
 -- | Insert an element into the queue.
 insert :: forall p a. (Ord p) => p -> a -> PQueue p a -> PQueue p a
 insert key value (PQueue list) = PQueue (L.insertBy cmp (Tuple key value) list)
 
+-- | Get the minimal element of a queue.
+head :: forall p a. PQueue p a -> Maybe (Tuple p a)
+head (PQueue list) = L.head list
+
 -- | Delete the minimal element of a queue.
-tail :: forall p a. PQueue p a -> PQueue p a
-tail (PQueue list) = PQueue (L.drop 1 list)
+tail :: forall p a. PQueue p a -> Maybe (PQueue p a)
+tail (PQueue Nil) = Nothing
+tail (PQueue list) = Just $ PQueue (LU.tail list)
+
+-- | Delete the maximal element of a queue.
+init :: forall p a. PQueue p a -> Maybe (PQueue p a)
+init (PQueue Nil) = Nothing
+init (PQueue list) = Just $ PQueue (LU.init list)
+
+-- | Get the maximal element of a queue.
+last :: forall p a. PQueue p a -> Maybe (Tuple p a)
+last (PQueue list) = L.last list
