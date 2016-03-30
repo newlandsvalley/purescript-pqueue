@@ -8,6 +8,9 @@ import Test.Spec.Runner (Process, run)
 import Test.Spec.Reporter.Console (consoleReporter)
 
 import Test.Data.PQueue (pqueueSpec)
+import Test.Data.PQueue.Partial (partialSpec)
 
 main :: forall e. Eff (console :: CONSOLE, process :: Process | e) Unit
-main = run [consoleReporter] pqueueSpec
+main = run [consoleReporter] do
+  pqueueSpec
+  partialSpec
