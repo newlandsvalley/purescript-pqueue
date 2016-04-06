@@ -21,13 +21,13 @@ import Data.Maybe (Maybe(..))
 import Data.Tuple (Tuple(..), fst)
 
 -- | `PQueue p a` represents a queue of elements of type `a` with priorities of type `p`.
-newtype PQueue p a = PQueue (List (Tuple p a))
+newtype PQueue p a = Empty | Node a p (Node a) (Node a)
 
-instance eqShow :: (Eq p, Eq a) => Eq (PQueue p a) where
-  eq (PQueue as) (PQueue bs) = as == bs
+instance eqPQueue :: (Eq a) => Eq (PQueue p a) where
+  eq (Node a _ a1 a2) (Node b _ b1 b2) = (a == b) && (a1 == b1) && (a2 == b2)
 
-instance showPQueue :: (Show p, Show a) => Show (PQueue p a) where
-  show (PQueue list) = show list
+instance showPQueue :: (Show a) => Show (PQueue p a) where
+  show (Node a p a1 a2) = show a
 
 -- | Compare two elements in the queue.
 cmp :: forall p a. (Ord p) => Tuple p a -> Tuple p a -> Ordering
@@ -39,15 +39,16 @@ fromFoldable f = PQueue (L.sortBy cmp (L.fromFoldable f))
 
 -- | Create an empty queue.
 empty :: forall p a. PQueue p a
-empty = PQueue Nil
+empty = Empty
 
 -- | Create a queue with a single element.
 singleton :: forall p a. p -> a -> PQueue p a
-singleton key value = PQueue (L.singleton (Tuple key value))
+singleton key value = Node a p Empty Empty
 
 -- | Test whether a queue is empty.
 isEmpty :: forall p a. PQueue p a -> Boolean
-isEmpty (PQueue list) = L.null list
+isEmpty Empty = true
+isEmpty _     = false
 
 -- | Insert an element into the queue.
 insert :: forall p a. (Ord p) => p -> a -> PQueue p a -> PQueue p a
