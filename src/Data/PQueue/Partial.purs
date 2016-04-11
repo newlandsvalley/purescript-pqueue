@@ -2,7 +2,8 @@ module Data.PQueue.Partial
   ( head
   , tail
   , init
-  , last ) where
+  , last
+  ) where
 
 import Data.PQueue (PQueue(..))
 import Data.Tuple (Tuple)
