@@ -1,6 +1,6 @@
 module Test.Data.PQueue.Partial where
 
-import Prelude (Unit, bind)
+import Prelude
 
 import Data.Tuple (Tuple(..))
 import Partial.Unsafe (unsafePartial)
@@ -8,7 +8,7 @@ import Test.Spec (Spec, describe, it)
 import Test.Spec.Assertions (shouldEqual)
 
 import Data.PQueue (fromFoldable)
-import Data.PQueue.Partial
+import Data.PQueue.Partial (head, init, last, tail)
 
 partialSpec :: forall r. (Spec r) Unit
 partialSpec = describe "Partial" do

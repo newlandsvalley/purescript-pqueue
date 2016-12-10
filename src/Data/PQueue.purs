@@ -11,7 +11,7 @@ module Data.PQueue
   , last
   ) where
 
-import Prelude (class Eq, class Ord, class Show, Ordering, compare, show, ($), (==))
+import Prelude
 
 import Data.Foldable (class Foldable)
 import Data.List (List(..))
