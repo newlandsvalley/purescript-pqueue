@@ -3,6 +3,7 @@ module Test.Data.PQueue.Partial where
 import Prelude (Unit, bind)
 
 import Data.Tuple (Tuple(..))
+import Partial.Unsafe (unsafePartial)
 import Test.Spec (Spec, describe, it)
 import Test.Spec.Assertions (shouldEqual)
 
@@ -15,16 +16,16 @@ partialSpec = describe "Partial" do
 
   describe "head" do
     it "gets the minimal element of the queue" do
-      head queue `shouldEqual` Tuple 2 "b"
+      unsafePartial (head queue) `shouldEqual` Tuple 2 "b"
 
   describe "tail" do
     it "deletes the minimal element of the queue" do
-      tail queue `shouldEqual` fromFoldable [(Tuple 3 "c")]
+      unsafePartial (tail queue) `shouldEqual` fromFoldable [(Tuple 3 "c")]
 
   describe "init" do
     it "deletes the maximal element of the queue" do
-      init queue `shouldEqual` fromFoldable [(Tuple 2 "b")]
+      unsafePartial (init queue) `shouldEqual` fromFoldable [(Tuple 2 "b")]
 
   describe "last" do
     it "gets the maximal element of the queue" do
-      last queue `shouldEqual` Tuple 3 "c"
+      unsafePartial (last queue) `shouldEqual` Tuple 3 "c"

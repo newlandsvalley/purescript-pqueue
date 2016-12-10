@@ -16,9 +16,10 @@ import Prelude (class Eq, class Ord, class Show, Ordering, compare, show, ($), (
 import Data.Foldable (class Foldable)
 import Data.List (List(..))
 import Data.List (fromFoldable, head, insertBy, last, null, singleton, sortBy) as L
-import Data.List.Unsafe (init, tail) as LU
+import Data.List.Partial (init, tail) as PL
 import Data.Maybe (Maybe(..))
 import Data.Tuple (Tuple(..), fst)
+import Partial.Unsafe (unsafePartial)
 
 -- | `PQueue p a` represents a queue of elements of type `a` with priorities of type `p`.
 newtype PQueue p a = PQueue (List (Tuple p a))
@@ -60,12 +61,12 @@ head (PQueue list) = L.head list
 -- | Delete the minimal element of a queue.
 tail :: forall p a. PQueue p a -> Maybe (PQueue p a)
 tail (PQueue Nil) = Nothing
-tail (PQueue list) = Just $ PQueue (LU.tail list)
+tail (PQueue list) = Just $ PQueue (unsafePartial $ PL.tail list)
 
 -- | Delete the maximal element of a queue.
 init :: forall p a. PQueue p a -> Maybe (PQueue p a)
 init (PQueue Nil) = Nothing
-init (PQueue list) = Just $ PQueue (LU.init list)
+init (PQueue list) = Just $ PQueue (unsafePartial $ PL.init list)
 
 -- | Get the maximal element of a queue.
 last :: forall p a. PQueue p a -> Maybe (Tuple p a)
