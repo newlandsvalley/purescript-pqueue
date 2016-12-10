@@ -18,6 +18,7 @@
   ],
   "dependencies": {
     "purescript-lists": "^3.2.1",
+    "purescript-newtype": "^1.1.0",
     "purescript-sets": "^2.0.0"
   },
   "devDependencies": {

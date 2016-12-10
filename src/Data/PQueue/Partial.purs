@@ -5,22 +5,26 @@ module Data.PQueue.Partial
   , last
   ) where
 
-import Data.PQueue (PQueue(..))
-import Data.Tuple (Tuple)
+import Prelude
+
 import Data.List.Partial as PL
+import Data.Newtype (over, unwrap)
+import Data.Tuple (Tuple)
+
+import Data.PQueue (PQueue(..))
 
 -- | Get the minimal element of a queue.
 head :: forall p a. Partial => PQueue p a -> Tuple p a
-head (PQueue list) = PL.head list
+head = PL.head <<< unwrap
 
 -- | Delete the minimal element of a queue.
 tail :: forall p a. Partial => PQueue p a -> PQueue p a
-tail (PQueue list) = PQueue (PL.tail list)
+tail = over PQueue PL.tail
 
 -- | Delete the maximal element of a queue.
 init :: forall p a. Partial => PQueue p a -> PQueue p a
-init (PQueue list) = PQueue (PL.init list)
+init = over PQueue PL.init
 
 -- | Get the maximal element of a queue.
 last :: forall p a. Partial => PQueue p a -> Tuple p a
-last (PQueue list) = PL.last list
+last = PL.last <<< unwrap
