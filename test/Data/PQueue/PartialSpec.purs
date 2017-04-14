@@ -1,4 +1,4 @@
-module Test.Data.PQueue.Partial where
+module Test.Data.PQueue.PartialSpec where
 
 import Prelude
 

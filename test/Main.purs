@@ -6,8 +6,8 @@ import Control.Monad.Eff (Eff)
 import Test.Spec.Runner (RunnerEffects, run)
 import Test.Spec.Reporter.Console (consoleReporter)
 
-import Test.Data.PQueue (pqueueSpec)
-import Test.Data.PQueue.Partial (partialSpec)
+import Test.Data.PQueueSpec (pqueueSpec)
+import Test.Data.PQueue.PartialSpec (partialSpec)
 
 main :: Eff (RunnerEffects ()) Unit
 main = run [consoleReporter] do

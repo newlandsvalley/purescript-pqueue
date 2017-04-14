@@ -1,4 +1,4 @@
-module Test.Data.PQueue where
+module Test.Data.PQueueSpec where
 
 import Prelude (Unit, discard)
 
