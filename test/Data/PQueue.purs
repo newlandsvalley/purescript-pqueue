@@ -1,6 +1,6 @@
 module Test.Data.PQueue where
 
-import Prelude (Unit, bind)
+import Prelude (Unit, discard)
 
 import Data.Maybe (Maybe(..))
 import Data.Tuple (Tuple(..))
