@@ -57,20 +57,20 @@ isEmpty = L.null <<< unwrap
 insert :: forall p a. Ord p => p -> a -> PQueue p a -> PQueue p a
 insert key value = over PQueue $ L.insertBy cmp (Tuple key value)
 
--- | Get the minimal element of a queue.
+-- | Get the first element of a queue, `Nothing` if the queue is empty.
 head :: forall p a. PQueue p a -> Maybe (Tuple p a)
 head = L.head <<< unwrap
 
--- | Delete the minimal element of a queue.
+-- | Get all but the first element of a queue, `Nothing` if the queue is empty.
 tail :: forall p a. PQueue p a -> Maybe (PQueue p a)
 tail (PQueue Nil) = Nothing
 tail queue = Just $ wrap $ unsafePartial $ PL.tail $ unwrap queue
 
--- | Delete the maximal element of a queue.
+-- | Get all but the last element of a queue, `Nothing` if the queue is empty.
 init :: forall p a. PQueue p a -> Maybe (PQueue p a)
 init (PQueue Nil) = Nothing
 init queue = Just $ wrap $ unsafePartial $ PL.init $ unwrap queue
 
--- | Get the maximal element of a queue.
+-- | Get the last element of a queue, `Nothing` if the queue is empty.
 last :: forall p a. PQueue p a -> Maybe (Tuple p a)
 last = L.last <<< unwrap

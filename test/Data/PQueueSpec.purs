@@ -20,28 +20,28 @@ pqueueSpec = describe "PQueue" do
       insert 4 "d" queue `shouldEqual` fromFoldable [(Tuple 2 "b"), (Tuple 3 "c"), (Tuple 4 "d")]
 
   describe "head" do
-    it "gets the minimal element of the queue" do
+    it "returns the first element of the queue" do
       head queue `shouldEqual` Just (Tuple 2 "b")
 
     it "returns nothing given an empty queue" do
       head emptyQueue `shouldEqual` Nothing
 
   describe "tail" do
-    it "deletes the minimal element of the queue" do
+    it "returns all but the first element of the queue" do
       tail queue `shouldEqual` Just (fromFoldable [(Tuple 3 "c")])
 
     it "returns nothing given an empty queue" do
       tail emptyQueue `shouldEqual` Nothing
 
   describe "init" do
-    it "deletes the maximal element of the queue" do
+    it "returns all but the last element of the queue" do
       init queue `shouldEqual` Just (fromFoldable [(Tuple 2 "b")])
 
     it "returns nothing given an empty queue" do
       init emptyQueue `shouldEqual` Nothing
 
   describe "last" do
-    it "gets the maximal element of the queue" do
+    it "returns the last element of the queue" do
       last queue `shouldEqual` Just (Tuple 3 "c")
 
     it "returns nothing given an empty queue" do
