@@ -1,6 +1,6 @@
 # purescript-pqueue
 
-[![Build Status](https://travis-ci.org/nullobject/purescript-pqueue.svg?branch=master)](https://travis-ci.org/nullobject/purescript-pqueue)
+[![Build Status](https://travis-ci.com/nullobject/purescript-pqueue.svg?branch=master)](https://travis-ci.com/nullobject/purescript-pqueue)
 
 A priority queue library for PureScript.
 
