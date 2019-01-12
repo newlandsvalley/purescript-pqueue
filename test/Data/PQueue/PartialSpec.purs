@@ -10,7 +10,7 @@ import Test.Spec.Assertions (shouldEqual)
 import Data.PQueue (fromFoldable)
 import Data.PQueue.Partial (head, init, last, tail)
 
-partialSpec :: forall r. (Spec r) Unit
+partialSpec :: Spec Unit
 partialSpec = describe "Partial" do
   let queue = fromFoldable [(Tuple 2 "b"), (Tuple 3 "c")]
 

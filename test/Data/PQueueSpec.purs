@@ -9,7 +9,7 @@ import Test.Spec.Assertions (shouldEqual)
 
 import Data.PQueue
 
-pqueueSpec :: forall r. (Spec r) Unit
+pqueueSpec :: Spec Unit
 pqueueSpec = describe "PQueue" do
   let queue = fromFoldable [(Tuple 2 "b"), (Tuple 3 "c")]
   let emptyQueue = fromFoldable []::(PQueue Int String)
