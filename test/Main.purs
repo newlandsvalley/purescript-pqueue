@@ -4,7 +4,7 @@ import Prelude
 
 import Effect (Effect)
 import Effect.Aff (launchAff)
-import Test.Spec.Runner (run, runSpec)
+import Test.Spec.Runner (runSpec)
 import Test.Spec.Reporter.Console (consoleReporter)
 
 import Test.Data.PQueueSpec (pqueueSpec)
