@@ -4,3 +4,5 @@ npm-debug.log
 output
 .psci*
 .pulp-cache
+.spago
+.purs-repl
