@@ -6,3 +6,4 @@ output
 .pulp-cache
 .spago
 .purs-repl
+.psc-ide-port
